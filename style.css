@@ -1,0 +1,139 @@
+/* Reset some default styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Set the background color for the body */
+body {
+    background-color: blanchedalmond;
+}
+
+.container {
+    font-size: 16px;
+    background-color: aliceblue;
+    width: 90vw;
+    max-width: 34rem; /* Added 'rem' unit */
+    position: absolute; /* Added a colon (:) */
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%; /* Added a semicolon (;) */
+    padding: 3em;
+    border-radius: 0.6em;
+    box-shadow: 0 1.2em 2.4em rgba(111, 85, 0, 0.25); /* Corrected the 'red' to 'rgba' and added 'a' for alpha */
+}
+
+#options-container {
+    text-align: center;
+}
+
+#options-container div {
+    width: 100%; /* Added a colon (:) */
+    display: flex;
+    justify-content: space-between; /* Corrected the typo in 'space-beween' */
+    margin: 1.2em 0 2.4em 0;
+}
+
+#options-container button {
+    padding: 0.6em 1.2em;
+    border: 3px solid #000000;
+    background-color: aliceblue;
+    color: #000000;
+    border-radius: 0.3em;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+#options-container button:disabled {
+    border: 3px solid #000000;
+    color: aqua;
+    background-color: aliceblue;
+}
+
+#options-container button.active {
+    background-color: blueviolet;
+    border: 3px solid #000000; /* Added a unit to the 'width' value */
+    color: chocolate;
+}
+
+.letter-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6em;
+}
+
+#letter-container button {
+    height: 2.4em;
+    width: 2.4rem; /* Added 'rem' unit */
+    border-radius: 0.3em;
+    background-color: cornsilk;
+    cursor: pointer;
+}
+
+.new-game-popup {
+    background-color: aliceblue;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 0.6em;
+}
+
+#user-input-section {
+    display: flex;
+    justify-content: center;
+    font-size: 1.8em;
+    margin: 0.6em 0 1.2em 0;
+}
+
+canvas {
+    display: block;
+    margin: auto;
+    border: 10px solid #8c52ff;
+    border-radius: 10px;
+}
+
+.hide {
+    display: none;
+}
+
+#result-text h2 {
+    font-size: 1.8em;
+    text-align: center;
+}
+
+#result-text p {
+    font-size: 1.25em;
+    margin: 1em 0 2em 0;
+}
+
+#result-text span {
+    font-weight: 600;
+}
+
+#new-game-button {
+    font-size: 1.25em;
+    padding: 0.5em 1em;
+    background-color: #8c52ff;
+    border: 3px solid #000000;
+    color: aliceblue;
+    border-radius: 0.2em;
+    cursor: pointer;
+}
+
+win-msg {
+    color: aquamarine;
+}
+
+lose-msg {
+    color: crimson;
+}
