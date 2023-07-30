@@ -1,4 +1,4 @@
-/* Reset some default styles */
+
 * {
     padding: 0;
     margin: 0;
@@ -6,9 +6,9 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* Set the background color for the body */
+
 body {
-    background-color: blanchedalmond;
+    background-color: rgb(88, 6, 211);
 }
 
 .container {
@@ -39,7 +39,7 @@ body {
 #options-container button {
     padding: 0.6em 1.2em;
     border: 3px solid #000000;
-    background-color: aliceblue;
+    background-color: rgb(249, 252, 255);
     color: #000000;
     border-radius: 0.3em;
     text-transform: capitalize;
@@ -48,14 +48,14 @@ body {
 
 #options-container button:disabled {
     border: 3px solid #000000;
-    color: aqua;
+    color: rgb(86, 88, 88);
     background-color: aliceblue;
 }
 
 #options-container button.active {
     background-color: blueviolet;
     border: 3px solid #000000;
-    color: chocolate;
+    color: rgb(242, 238, 236);
 }
 
 .letter-container {
@@ -68,7 +68,7 @@ body {
 
 #letter-container button {
     height: 2.4em;
-    width: 2.4rem;
+    width: 2.4em;
     border-radius: 0.3em;
     background-color: cornsilk;
     cursor: pointer;
@@ -128,12 +128,15 @@ canvas {
     color: aliceblue;
     border-radius: 0.2em;
     cursor: pointer;
+    
 }
+
 
 .win-msg {
     color: aquamarine;
 }
 
 .lose-msg {
-    color: crimson;
+    color: #fe5252;
 }
+    
