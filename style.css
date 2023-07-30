@@ -15,14 +15,14 @@ body {
     font-size: 16px;
     background-color: aliceblue;
     width: 90vw;
-    max-width: 34rem; /* Added 'rem' unit */
-    position: absolute; /* Added a colon (:) */
+    max-width: 34rem;
+    position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
-    left: 50%; /* Added a semicolon (;) */
+    left: 50%;
     padding: 3em;
     border-radius: 0.6em;
-    box-shadow: 0 1.2em 2.4em rgba(111, 85, 0, 0.25); /* Corrected the 'red' to 'rgba' and added 'a' for alpha */
+    box-shadow: 0 1.2em 2.4em rgba(111, 85, 0, 0.25);
 }
 
 #options-container {
@@ -30,9 +30,9 @@ body {
 }
 
 #options-container div {
-    width: 100%; /* Added a colon (:) */
+    width: 100%;
     display: flex;
-    justify-content: space-between; /* Corrected the typo in 'space-beween' */
+    justify-content: space-between;
     margin: 1.2em 0 2.4em 0;
 }
 
@@ -54,7 +54,7 @@ body {
 
 #options-container button.active {
     background-color: blueviolet;
-    border: 3px solid #000000; /* Added a unit to the 'width' value */
+    border: 3px solid #000000;
     color: chocolate;
 }
 
@@ -68,7 +68,7 @@ body {
 
 #letter-container button {
     height: 2.4em;
-    width: 2.4rem; /* Added 'rem' unit */
+    width: 2.4rem;
     border-radius: 0.3em;
     background-color: cornsilk;
     cursor: pointer;
@@ -130,10 +130,10 @@ canvas {
     cursor: pointer;
 }
 
-win-msg {
+.win-msg {
     color: aquamarine;
 }
 
-lose-msg {
+.lose-msg {
     color: crimson;
 }
