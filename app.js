@@ -255,7 +255,7 @@ const canvasCreator = () => {
   
   
   const drawMan = (count) => {
-    let { head, body, leftArm, rightArm, leftLeg, rightLeg, cowboyHat, cowboyVest, cowboyBoots } = canvasCreator();
+    let { head, body, leftArm, rightArm, leftLeg, rightLeg,} = canvasCreator();
     switch (count) {
       case 1:
         head();
@@ -277,7 +277,9 @@ const canvasCreator = () => {
         break;
       default:
         break;
-      
+      case 7:
+        cowboyHat();
+        break;
     }
   
     

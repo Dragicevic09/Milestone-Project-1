@@ -154,7 +154,7 @@ body {
   #new-game-button:hover {
     background-color: #f5e1da; 
     color: #be5d28; 
-  
+  }
   .win-msg {
     color: #39d78d;
   }
