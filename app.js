@@ -6,6 +6,9 @@ const newGameContainer = document.getElementById("new-game-container");
 const newGameButton = document.getElementById("new-game-button");
 const canvas = document.getElementById("canvas");
 const resultText = document.getElementById("result-text");
+const customWordInputContainer = document.getElementById("custom-word-input-container");
+const customWordInput = document.getElementById("custom-word-input");
+const customWordButton = document.getElementById("custom-word-button");
 
 //Options values for buttons
 let options = {
@@ -17,32 +20,49 @@ let options = {
     "Pomegranate",
     "Watermelon",
   ],
-  animals: ["Hedgehog", "Rhinoceros", "Squirrel", "Panther", "Walrus", "Zebra"],
+  animals: ["Wolf", "Tiger", "Lion", "Horse", "Platypus", "Panda"],
   countries: [
-    "India",
-    "Hungary",
+    "Serbia",
+    "Russia",
     "Kyrgyzstan",
     "Switzerland",
     "Zimbabwe",
-    "Dominica",
+    "Croatia",
   ],
 };
 
+// Custom Word Input Button Click Event
+customWordButton.addEventListener("click", () => {
+    const customWord = customWordInput.value.trim();
+    if (customWord.length > 0) {
+      options.custom = [customWord];
+      displayOptions();
+      customWordInputContainer.classList.add("hide");
+      customWordInput.value = "";
+    }
+  });
 //count
 let winCount = 0;
 let count = 0;
 
 let chosenWord = "";
 
-//Display option buttons
+// Display custom word input if the option is selected
 const displayOptions = () => {
-  optionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
-  let buttonCon = document.createElement("div");
-  for (let value in options) {
-    buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}')">${value}</button>`;
-  }
-  optionsContainer.appendChild(buttonCon);
-};
+    optionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
+    let buttonCon = document.createElement("div");
+    for (let value in options) {
+      buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}')">${value}</button>`;
+    }
+  
+    if (options.custom && options.custom.length > 0) {
+      customWordInputContainer.classList.remove("hide");
+    } else {
+      customWordInputContainer.classList.add("hide");
+    }
+  
+    optionsContainer.appendChild(buttonCon);
+  };
 
 //Block all the Buttons
 const blocker = () => {
@@ -70,7 +90,43 @@ const generateWord = (optionValue) => {
     }
     button.disabled = true;
   });
+// Timer variables
+let timerId;
+const timerDuration = 60; // in seconds
 
+// Start Timer
+const startTimer = () => {
+  let timeLeft = timerDuration;
+  const timerDisplay = document.getElementById("timer-display");
+
+  timerId = setInterval(() => {
+    if (timeLeft > 0) {
+      timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+      timeLeft--;
+    } else {
+      clearInterval(timerId);
+      handleGameEnd(false);
+    }
+  }, 1000);
+};
+
+// Stop Timer
+const stopTimer = () => {
+  clearInterval(timerId);
+};
+
+// Initial Function (Called when page loads/user presses new game)
+const initializer = () => {
+  // ... (existing code remains unchanged)
+
+  // Clear timer if it's running
+  stopTimer();
+
+  // Start timer for the new game
+  startTimer();
+
+  // ... (existing code remains unchanged)
+};
   //initially hide letters, clear previous word
   letterContainer.classList.remove("hide");
   userInputSection.innerText = "";
@@ -189,7 +245,61 @@ const canvasCreator = () => {
   const rightLeg = () => {
     drawLine(70, 80, 90, 110);
   };
-
+  const cowboyHat = () => {
+    context.beginPath();
+    context.rect(55, 10, 30, 10);
+    context.fillStyle = "#000";
+    context.fill();
+    context.closePath();
+  };
+  
+  const cowboyVest = () => {
+    context.beginPath();
+    context.rect(65, 40, 10, 20);
+    context.fillStyle = "#8c52ff"; // Purple color for the vest (you can choose any color you like)
+    context.fill();
+    context.closePath();
+  };
+  
+  const cowboyBoots = () => {
+    context.beginPath();
+    context.rect(60, 100, 20, 15);
+    context.fillStyle = "#000";
+    context.fill();
+    context.closePath();
+  };
+  
+  // Modify the drawMan function to draw the cowboy outfit
+  const drawMan = (count) => {
+    let { head, body, leftArm, rightArm, leftLeg, rightLeg } = canvasCreator();
+    switch (count) {
+      case 1:
+        head();
+        break;
+      case 2:
+        body();
+        break;
+      case 3:
+        leftArm();
+        break;
+      case 4:
+        rightArm();
+        break;
+      case 5:
+        leftLeg();
+        break;
+      case 6:
+        rightLeg();
+        break;
+      default:
+        break;
+    }
+  
+    // Draw cowboy outfit
+    cowboyHat();
+    cowboyVest();
+    cowboyBoots();
+  };
   //initial frame
   const initialDrawing = () => {
     //clear canvas
