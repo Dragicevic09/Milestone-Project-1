@@ -96,8 +96,7 @@ body {
   }
   
   .new-game-popup {
-    background-color: #f5e1da; /* Light beige color for the popup */
-    position: absolute;
+    background-color: #f5e1da; 
     left: 0;
     top: 0;
     height: 100%;
@@ -119,7 +118,7 @@ body {
   canvas {
     display: block;
     margin: auto;
-    border: 10px solid #be5d28; /* Dark brown border for the canvas */
+    border: 10px solid #be5d28; 
     border-radius: 10px;
   }
   
@@ -144,18 +143,17 @@ body {
   #new-game-button {
     font-size: 1.25em;
     padding: 0.5em 1em;
-    background-color: #be5d28; /* Dark brown background color for new game button */
-    border: 3px solid #f5e1da; /* Light beige border for new game button */
-    color: #f5e1da; /* Light beige text color for new game button */
+    background-color: #be5d28; 
+    border: 3px solid #f5e1da; 
+    color: #f5e1da; 
     border-radius: 0.2em;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
   }
   
   #new-game-button:hover {
-    background-color: #f5e1da; /* Light beige background on hover */
-    color: #be5d28; /* Dark brown text color on hover */
-  }
+    background-color: #f5e1da; 
+    color: #be5d28; 
   
   .win-msg {
     color: #39d78d;

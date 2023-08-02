@@ -1,4 +1,4 @@
-//Initial References
+
 const letterContainer = document.getElementById("letter-container");
 const optionsContainer = document.getElementById("options-container");
 const userInputSection = document.getElementById("user-input-section");
@@ -20,14 +20,35 @@ let options = {
     "Pomegranate",
     "Watermelon",
   ],
-  animals: ["Wolf", "Tiger", "Lion", "Horse", "Platypus", "Panda"],
-  countries: [
+  animals: [
+    "Panda",
+    "Lion",
+    "Tiger",
+    "Capybara",
+    "Markhor",
+    "Gerenuk",
+  ],
+  wildWest: [
+    "cowboy",
+    "sheriff",
+    "outlaw",
+    "saloon",
+    "revolver",
+    "pony",
+    "bandit",
+    "cactus",
+    "gold",
+    "saddle",
+    "marshal",
+  ],
+  countries: [ 
     "Serbia",
     "Russia",
     "Kyrgyzstan",
     "Switzerland",
     "Zimbabwe",
     "Croatia",
+    "Afghanistan",
   ],
 };
 
@@ -49,7 +70,7 @@ let chosenWord = "";
 
 // Display custom word input if the option is selected
 const displayOptions = () => {
-    optionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
+    optionsContainer.innerHTML += `<h3>Please Select A Wild West Word</h3>`;
     let buttonCon = document.createElement("div");
     for (let value in options) {
       buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}')">${value}</button>`;
@@ -90,56 +111,20 @@ const generateWord = (optionValue) => {
     }
     button.disabled = true;
   });
-// Timer variables
-let timerId;
-const timerDuration = 60; // in seconds
 
-// Start Timer
-const startTimer = () => {
-  let timeLeft = timerDuration;
-  const timerDisplay = document.getElementById("timer-display");
-
-  timerId = setInterval(() => {
-    if (timeLeft > 0) {
-      timerDisplay.textContent = `Time Left: ${timeLeft}s`;
-      timeLeft--;
-    } else {
-      clearInterval(timerId);
-      handleGameEnd(false);
-    }
-  }, 1000);
-};
-
-// Stop Timer
-const stopTimer = () => {
-  clearInterval(timerId);
-};
-
-// Initial Function (Called when page loads/user presses new game)
-const initializer = () => {
-  // ... (existing code remains unchanged)
-
-  // Clear timer if it's running
-  stopTimer();
-
-  // Start timer for the new game
-  startTimer();
-
-  // ... (existing code remains unchanged)
-};
   //initially hide letters, clear previous word
   letterContainer.classList.remove("hide");
   userInputSection.innerText = "";
 
   let optionArray = options[optionValue];
-  //choose random word
+  
   chosenWord = optionArray[Math.floor(Math.random() * optionArray.length)];
   chosenWord = chosenWord.toUpperCase();
 
   //replace every letter with span containing dash
   let displayItem = chosenWord.replace(/./g, '<span class="dashes">_</span>');
 
-  //Display each element as span
+ 
   userInputSection.innerHTML = displayItem;
 };
 
@@ -168,41 +153,41 @@ const initializer = () => {
       //if array contains clciked value replace the matched dash with letter else dram on canvas
       if (charArray.includes(button.innerText)) {
         charArray.forEach((char, index) => {
-          //if character in array is same as clicked button
+          
           if (char === button.innerText) {
-            //replace dash with letter
+            
             dashes[index].innerText = char;
-            //increment counter
+            
             winCount += 1;
-            //if winCount equals word lenfth
+            
             if (winCount == charArray.length) {
               resultText.innerHTML = `<h2 class='win-msg'>You Win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
-              //block all buttons
+              
               blocker();
             }
           }
         });
       } else {
-        //lose count
+       
         count += 1;
-        //for drawing man
+        
         drawMan(count);
-        //Count==6 because head,body,left arm, right arm,left leg,right leg
+        
         if (count == 6) {
           resultText.innerHTML = `<h2 class='lose-msg'>You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`;
           blocker();
         }
       }
-      //disable clicked button
+      
       button.disabled = true;
     });
     letterContainer.append(button);
   }
 
   displayOptions();
-  //Call to canvasCreator (for clearing previous canvas and creating initial canvas)
+  
   let { initialDrawing } = canvasCreator();
-  //initialDrawing would draw the frame
+  
   initialDrawing();
 };
 
@@ -256,8 +241,7 @@ const canvasCreator = () => {
   const cowboyVest = () => {
     context.beginPath();
     context.rect(65, 40, 10, 20);
-    context.fillStyle = "#8c52ff"; // Purple color for the vest (you can choose any color you like)
-    context.fill();
+    context.fillStyle = "#8c52ff"; 
     context.closePath();
   };
   
@@ -269,9 +253,9 @@ const canvasCreator = () => {
     context.closePath();
   };
   
-  // Modify the drawMan function to draw the cowboy outfit
+  
   const drawMan = (count) => {
-    let { head, body, leftArm, rightArm, leftLeg, rightLeg } = canvasCreator();
+    let { head, body, leftArm, rightArm, leftLeg, rightLeg, cowboyHat, cowboyVest, cowboyBoots } = canvasCreator();
     switch (count) {
       case 1:
         head();
@@ -293,24 +277,25 @@ const canvasCreator = () => {
         break;
       default:
         break;
+      
     }
   
-    // Draw cowboy outfit
+    
     cowboyHat();
     cowboyVest();
     cowboyBoots();
   };
-  //initial frame
+  
   const initialDrawing = () => {
-    //clear canvas
+   
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-    //bottom line
+    
     drawLine(10, 130, 130, 130);
-    //left line
+   
     drawLine(10, 10, 10, 131);
-    //top line
+    
     drawLine(10, 10, 70, 10);
-    //small top line
+    
     drawLine(70, 10, 70, 20);
   };
 
